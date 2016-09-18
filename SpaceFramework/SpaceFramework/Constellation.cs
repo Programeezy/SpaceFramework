@@ -14,11 +14,22 @@ namespace SpaceFramework
 
     public class ConstellationCollection : ICollection<Constellation>
     {
+        private Tuple<Constellation>[] _constellas;
+
+        public ConstellationCollection(params Tuple<Constellation>[] constellas)
+        {
+            if (constellas.Length == 0)
+                throw new ArgumentException("Empty Collection");
+            else
+            _constellas = constellas;
+        }
         public int Count
         {
             get
             {
-                throw new NotImplementedException();
+                if (_constellas.Length < 1)
+                    throw new NotImplementedException();
+                else return _constellas.Length;
             }
         }
 
@@ -32,7 +43,10 @@ namespace SpaceFramework
 
         public void Add(Constellation item)
         {
-            throw new NotImplementedException();
+            Array.Resize(ref _constellas, _constellas.Length + 1);
+            int i = _constellas.Length - 1;
+            Tuple<Constellation> temp = Tuple.Create(item);
+            _constellas[i] = temp;
         }
 
         public void Clear()
@@ -46,13 +60,14 @@ namespace SpaceFramework
         }
 
         public void CopyTo(Constellation[] array, int arrayIndex)
-        {
+        {   
             throw new NotImplementedException();
         }
 
         public IEnumerator<Constellation> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _constellas.Length - 1; i++)
+                yield return _constellas[i].Item1;
         }
 
         public bool Remove(Constellation item)
