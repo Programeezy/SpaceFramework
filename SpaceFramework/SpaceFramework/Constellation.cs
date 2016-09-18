@@ -9,76 +9,108 @@ namespace SpaceFramework
 {
     public class Constellation
     {
-
+        public string Name;
+        public string ImagePath;
+        public StarCollection Constellations;
     }
 
-    public class ConstellationCollection : ICollection<Constellation>
+    public class ConstellationCollection : IEnumerable<Constellation>
     {
-        private Tuple<Constellation>[] _constellas;
+        private Constellation[] _Constellations;
 
-        public ConstellationCollection(params Tuple<Constellation>[] constellas)
+        public ConstellationCollection()
         {
-            if (constellas.Length == 0)
-                throw new ArgumentException("Empty Collection");
-            else
-            _constellas = constellas;
-        }
-        public int Count
-        {
-            get
-            {
-                if (_constellas.Length < 1)
-                    throw new NotImplementedException();
-                else return _constellas.Length;
-            }
+
         }
 
-        public bool IsReadOnly
+        public ConstellationCollection(params Constellation[] Constellations)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
 
-        public void Add(Constellation item)
-        {
-            Array.Resize(ref _constellas, _constellas.Length + 1);
-            int i = _constellas.Length - 1;
-            Tuple<Constellation> temp = Tuple.Create(item);
-            _constellas[i] = temp;
-        }
+            Array.Resize(ref _Constellations, Constellations.Length);
+            _Constellations = Constellations;
 
-        public void Clear()
-        {
-            throw new NotImplementedException();
+
         }
 
         public bool Contains(Constellation item)
         {
-            throw new NotImplementedException();
+            foreach (Constellation _item in this)
+            {
+                if (_item == item)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
-        public void CopyTo(Constellation[] array, int arrayIndex)
-        {   
-            throw new NotImplementedException();
+        public void Add(Constellation item)
+        {
+            Array.Resize(ref _Constellations, _Constellations.Length + 1);
+            _Constellations[_Constellations.Length - 1] = item;
         }
 
+        public bool Find(string Name)
+        {
+            foreach (Constellation _item in this)
+            {
+                if (_item.Name == Name)
+                    return true;
+            }
+
+            return false;
+        }
+
+      
         public IEnumerator<Constellation> GetEnumerator()
         {
-            for (int i = 0; i < _constellas.Length - 1; i++)
-                yield return _constellas[i].Item1;
-        }
-
-        public bool Remove(Constellation item)
-        {
-            throw new NotImplementedException();
+            for (int i = 0; i < _Constellations.Length - 1; i++)
+                yield return _Constellations[i];
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _Constellations.Length - 1; i++)
+                yield return _Constellations[i];
+        }
+
+        public class ConstellationEnum : IEnumerator
+        {
+            public Constellation[] _Constellations;
+            int position = -1;
+
+            public ConstellationEnum(Constellation[] Constellations)
+            {
+                _Constellations = Constellations;
+            }
+
+            public object Current
+            {
+                get
+                {
+                    try
+                    {
+                        return _Constellations[position];
+                    }
+
+                    catch (IndexOutOfRangeException)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+            }
+
+            public bool MoveNext()
+            {
+                position++;
+                return (position < _Constellations.Length);
+            }
+
+            public void Reset()
+            {
+                position = -1;
+            }
         }
     }
-
 }
