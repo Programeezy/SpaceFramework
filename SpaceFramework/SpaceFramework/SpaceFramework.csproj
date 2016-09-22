@@ -41,9 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constellation.cs" />
+    <Compile Include="ConstellationCollection.cs" />
     <Compile Include="Planet.cs" />
+    <Compile Include="PlanetCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Star.cs" />
+    <Compile Include="StarCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
