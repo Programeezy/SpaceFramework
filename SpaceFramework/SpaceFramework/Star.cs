@@ -7,17 +7,26 @@ using System.Threading.Tasks;
 
 namespace SpaceFramework
 {
-    public enum StarEnum
+    public enum LumEnum
     {
         O, B, A, F, G, K, M
     }
     public class Star
     {
+        public Star(string name, double rad, double mass, double luminosity, LumEnum type, PlanetCollection satellite)
+        {
+            Name = name;
+            Radius = rad;
+            Mass = mass;
+            Luminosity = luminosity;
+            Type = type;
+            SatellitePlanets = satellite;
+        } 
         public string Name;
         private double Radius;
         private double Mass;
         private double Luminosity;
-        public StarEnum Type;
+        public LumEnum Type;
         public PlanetCollection SatellitePlanets; 
     }
 

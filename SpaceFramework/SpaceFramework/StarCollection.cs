@@ -55,7 +55,7 @@ namespace SpaceFramework
             return false;
         }
 
-        public StarCollection Find(StarEnum SType)
+        public StarCollection Find(LumEnum SType)
         {
             StarCollection stars = new StarCollection();
             foreach (Star item in this)

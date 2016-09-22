@@ -13,11 +13,11 @@ namespace SpaceFramework
         {
             Name = name;
             ImagePath = imagepath;
-            Constellations = constellas;
+            Stars = constellas;
         }
         public string Name;
         public string ImagePath;
-        public StarCollection Constellations;
+        public StarCollection Stars;
     }
 
 }

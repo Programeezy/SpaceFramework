@@ -29,11 +29,11 @@ namespace SpaceFramework
 
         public bool IsExist;
         public string Name;
-        private double Radius;
-        private double Mass;
-        private double PeriodOfSpinning;
-        private double PeriodOfRotation;
-        private double RadiusOfOrbit;
+        public double Radius;
+        public double Mass;
+        public double PeriodOfSpinning;
+        public double PeriodOfRotation;
+        public double RadiusOfOrbit;
         public Star[] Satellites;
     }
     
