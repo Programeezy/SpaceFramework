@@ -9,7 +9,7 @@ namespace SpaceFramework
 {
     public class PlanetCollection : IEnumerable<Planet>
     {
-        private Planet[] _Planets;
+        private Planet[] _Planets = new Planet[0];
 
         public PlanetCollection(params Planet[] Planets)
         {

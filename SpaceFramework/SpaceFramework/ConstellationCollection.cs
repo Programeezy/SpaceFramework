@@ -7,20 +7,28 @@ using System.Threading.Tasks;
 
 namespace SpaceFramework
 {
-    public class ConstellationCollection : IEnumerable<Constellation>
+    public class CoolCollection<T> : IEnumerable<T>
     {
-        private Constellation[] _Constellations;
+
+    }
+
+    public class ConstellationCollection : CoolCollection<Constellation>
+    {
+        private Constellation[] _constellation;
 
         public ConstellationCollection()
         {
-
+            
         }
 
-        public ConstellationCollection(params Constellation[] Constellations)
+        public ConstellationCollection(params Constellation[] constellation)
         {
-
-            Array.Resize(ref _Constellations, Constellations.Length);
-            _Constellations = Constellations;
+            if (constellation == null)
+            {
+                throw new ArgumentNullException(nameof(constellation));
+            }
+            Array.Resize(ref _constellation, constellation.Length);
+            _constellation = constellation;
 
 
         }
@@ -40,32 +48,38 @@ namespace SpaceFramework
 
         public void Add(Constellation item)
         {
-            Array.Resize(ref _Constellations, _Constellations.Length + 1);
-            _Constellations[_Constellations.Length - 1] = item;
+            Array.Resize(ref _constellation, _constellation.Length + 1);
+            _constellation[_constellation.Length - 1] = item;
         }
 
-        public bool Find(string Name)
+        public bool Remvoe(Constellation item)
         {
-            foreach (Constellation _item in this)
-            {
-                if (_item.Name == Name)
-                    return true;
-            }
+            throw new NotImplementedException();
+        }
 
-            return false;
+        public Constellation FindByName(string name)
+        {
+            foreach (Constellation item in this)
+            {
+                if (item.Name == name)
+                {
+                    return item;
+                }
+            }
+            return null;
+            // throw new bla=bla-bla-Exception()
         }
 
 
         public IEnumerator<Constellation> GetEnumerator()
         {
-            for (int i = 0; i < _Constellations.Length - 1; i++)
-                yield return _Constellations[i];
+            for (int i = 0; i < _constellation.Length - 1; i++)
+                yield return _constellation[i];
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            for (int i = 0; i < _Constellations.Length - 1; i++)
-                yield return _Constellations[i];
+            return GetEnumerator();
         }
 
     }

@@ -13,7 +13,7 @@ namespace SpaceFramework
 
         public StarCollection()
         {
-
+            _stars = new Star[0];
         }
 
         public StarCollection(params Star[] stars)

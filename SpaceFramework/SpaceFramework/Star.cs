@@ -22,10 +22,11 @@ namespace SpaceFramework
             Type = type;
             SatellitePlanets = satellite;
         } 
+
         public string Name;
-        private double Radius;
-        private double Mass;
-        private double Luminosity;
+        public double Radius;
+        public double Mass;
+        public double Luminosity;
         public LumEnum Type;
         public PlanetCollection SatellitePlanets; 
     }
