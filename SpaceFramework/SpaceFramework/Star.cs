@@ -21,14 +21,20 @@ namespace SpaceFramework
             Luminosity = luminosity;
             Type = type;
             SatellitePlanets = satellite;
-        } 
+        }
 
-        public string Name;
-        public double Radius;
-        public double Mass;
-        public double Luminosity;
-        public LumEnum Type;
-        public PlanetCollection SatellitePlanets; 
+        public override string ToString()
+        {
+            return Name;
+        }
+        //todo:Properties
+        public string Name { get; set; }
+        public double Radius { get; set; }
+        public double Mass { get; set;  }
+        public double Luminosity { get; set; }
+        public LumEnum Type { get; set; }
+        public PlanetCollection SatellitePlanets { get; set; } 
+
     }
 
     

@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace SpaceFramework
 {
-    public class MainCollection<T> : IEnumerable<T>
+    public class MainCollection<T> : IEnumerable<T>, IObservable<T>
     {
         private T[] _Collection = new T[0];
         public int Count { get; set; }
 
         public MainCollection()
-        { }
+        {
+            Count = 0;
+        }
 
         public MainCollection(params T[] collection)
         {
@@ -41,10 +43,10 @@ namespace SpaceFramework
 
         public void Add(T item)
         {
-            if(_Collection.Length - this.Count == 1)
+            if (_Collection.Length - this.Count == 1 || _Collection.Length == 0)
                 Array.Resize(ref _Collection, _Collection.Length + 16);
 
-            _Collection[this.Count] = item;
+            _Collection[Count] = item;
             Count++;
         }
 
@@ -65,13 +67,18 @@ namespace SpaceFramework
         }
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < this.Count - 1; i++)
+            for (int i = 0; i < Count; i++)
                 yield return _Collection[i];
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public IDisposable Subscribe(IObserver<T> observer)
+        {
+            throw new NotImplementedException();
         }
     }
 }

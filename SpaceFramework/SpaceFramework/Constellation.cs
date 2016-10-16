@@ -8,9 +8,9 @@
             ImagePath = imagepath;
             Stars = constellas;
         }
-        public string Name;
-        public string ImagePath;
-        public StarCollection Stars;
+        public string Name { get; set; }
+        public string ImagePath { get; set; }
+        public StarCollection Stars { get; set; }
     }
 
 }

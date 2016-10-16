@@ -18,8 +18,12 @@ namespace SpaceFramework
             PeriodOfSpinning = PoS;
             PeriodOfRotation = PoR;
             RadiusOfOrbit = RoO;
-            Array.Resize(ref Satellites, satellites.Length);
-            Satellites = satellites;
+           if (satellites != null)
+            {
+                Array.Resize(ref Satellites, satellites.Length);
+                Satellites = satellites;
+            }
+            else Satellites = null;
         }
 
         public Planet()
@@ -27,13 +31,14 @@ namespace SpaceFramework
             IsExist = false;
         }
 
+        // todo: properties
         public bool IsExist;
-        public string Name;
-        public double Radius;
-        public double Mass;
-        public double PeriodOfSpinning;
-        public double PeriodOfRotation;
-        public double RadiusOfOrbit;
+        public string Name { get; set; }
+        public double Radius { get; set; }
+        public double Mass { get; set; }
+        public double PeriodOfSpinning { get; set; }
+        public double PeriodOfRotation { get; set; }
+        public double RadiusOfOrbit { get; set; }
         public Star[] Satellites;
     }
     

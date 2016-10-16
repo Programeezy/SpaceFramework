@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceFramework", "SpaceFramework\SpaceFramework.csproj", "{CF9F324C-BC97-4BD5-A6F9-C7DDC01175C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceFramework.Desktop", "SpaceFramework.Desktop\SpaceFramework.Desktop.csproj", "{D2BF946D-E923-4E0C-9048-2EA8D212DDA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceFramework.IO", "SpaceFramework.IO\SpaceFramework.IO.csproj", "{5F5A8116-393F-42F4-B660-A5E9E0176B12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{CF9F324C-BC97-4BD5-A6F9-C7DDC01175C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF9F324C-BC97-4BD5-A6F9-C7DDC01175C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF9F324C-BC97-4BD5-A6F9-C7DDC01175C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2BF946D-E923-4E0C-9048-2EA8D212DDA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2BF946D-E923-4E0C-9048-2EA8D212DDA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2BF946D-E923-4E0C-9048-2EA8D212DDA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2BF946D-E923-4E0C-9048-2EA8D212DDA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F5A8116-393F-42F4-B660-A5E9E0176B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F5A8116-393F-42F4-B660-A5E9E0176B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F5A8116-393F-42F4-B660-A5E9E0176B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F5A8116-393F-42F4-B660-A5E9E0176B12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

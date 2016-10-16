@@ -23,7 +23,7 @@ namespace SpaceFramework
 
         public StarCollection Find(LumEnum SType)
         {
-            StarCollection stars = new StarCollection();
+            var stars = new StarCollection();
             foreach (Star item in this)
             {
                 if (item.Type.Equals(SType))
