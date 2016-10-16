@@ -56,13 +56,15 @@ namespace SpaceFramework
             { 
                 if(item.Equals(_Collection[i]))
                 {
-                    for (int j = i; j < Count; j++)
+                    for (int j = i; j <= Count; j++)
                         _Collection[j] = _Collection[j + 1];
-
+                    _Collection[Count] = default(T);
+                    Count--;
                     return true;
                 }
             }
 
+            
             return false;
         }
         public IEnumerator<T> GetEnumerator()

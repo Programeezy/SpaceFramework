@@ -32,10 +32,23 @@ namespace SpaceFramework.Desktop
             
         }
 
-        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+       private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var infoWindow = new ObjectInfo() { DataContext = new ViewModel.ViewModelObjectInfo((Star)Stars.SelectedItem) };
-            infoWindow.Show();
+            if (Stars.SelectedItem != null)
+            {
+                var infoWindow = new StarInfo() { DataContext = new ViewModel.ViewModelStarInfo((Star)Stars.SelectedItem) };
+                infoWindow.Show();
+            }
+        }
+
+        private void Stars_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
+
+        private void Stars_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
         }
     }
 }

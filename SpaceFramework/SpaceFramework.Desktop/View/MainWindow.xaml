@@ -8,11 +8,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         DataContext="{DynamicResource MainViewModel}">
-        <Window.Resources>
+    <Window.Resources>
         <ViewModel:ViewModelMainWindow x:Key="MainViewModel" />
     </Window.Resources>
     <Grid>
-        <ListBox Name="Stars" ItemsSource="{Binding Stars}" SelectedItem="{Binding SelectedStar}" DisplayMemberPath="Name" HorizontalAlignment="Left" MouseDoubleClick="ListBox_MouseDoubleClick"  />
+        <ListBox Name="Stars"  ItemsSource="{Binding Stars}" SelectedItem="{Binding SelectedStar}" DisplayMemberPath="Name" HorizontalAlignment="Left" MouseDoubleClick="ListBox_MouseDoubleClick" Margin="10,10,0,135" Width="186" />
+        <Button Content="Remove" Margin="239,10,211,282" Command="{Binding  RemoveStar}" />
     </Grid>
 </Window>
 
