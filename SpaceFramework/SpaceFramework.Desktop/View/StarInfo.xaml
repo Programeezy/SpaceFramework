@@ -1,0 +1,24 @@
+﻿<Window x:Class="SpaceFramework.Desktop.View.StarInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpaceFramework.Desktop.View"
+        mc:Ignorable="d"
+        Title="Star Information" Height="300" Width="300">
+    <Grid>
+        <TextBlock Text="Name:" Margin="5,5"/>
+        <TextBlock Text="{Binding Name}" Margin="90,5,50,200"/>
+        <TextBlock Text="Radius:" Margin="5,25" />
+        <TextBlock Text="{Binding Radius}" Margin="90,25,50,180"/>
+        <TextBlock Text="Mass:" Margin="5,45" />
+        <TextBlock Text="{Binding Mass}" Margin="90,45,50,160"/>
+        <TextBlock Text="Luminosity:" Margin="5,65" />
+        <TextBlock Text="{Binding Luminosity}" Margin="90,65,50,140" />
+        <TextBlock Text="Type:" Margin="5,85" />
+        <TextBlock Text="{Binding Type}" Margin="90,85,50,120"/>
+        <TextBlock Text ="Planets Satellites:" Margin="5,105"/>
+        <ListBox Name="Planets_Sat"  Margin="5,125,50,100" ItemsSource="{Binding Satellites}" DisplayMemberPath="Name" />
+
+    </Grid>
+</Window>
