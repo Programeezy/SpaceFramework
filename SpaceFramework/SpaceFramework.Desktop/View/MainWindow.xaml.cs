@@ -22,17 +22,17 @@ namespace SpaceFramework.Desktop
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window 
+    public partial class MainWindow : Window
     {
 
-   
+
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
 
-       private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (Stars.SelectedItem != null)
             {
@@ -41,14 +41,11 @@ namespace SpaceFramework.Desktop
             }
         }
 
-        private void Stars_SourceUpdated(object sender, DataTransferEventArgs e)
+    
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Stars_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
+            var viewModel = DataContext as ViewModel.ViewModelMainWindow;
+            viewModel.Stars.Remove((Star)Stars.SelectedItem);
         }
     }
 }

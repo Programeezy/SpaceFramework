@@ -13,7 +13,7 @@
     </Window.Resources>
     <Grid>
         <ListBox Name="Stars"  ItemsSource="{Binding Stars}" SelectedItem="{Binding SelectedStar}" DisplayMemberPath="Name" HorizontalAlignment="Left" MouseDoubleClick="ListBox_MouseDoubleClick" Margin="10,10,0,135" Width="186" />
-        <Button Content="Remove" Margin="239,10,211,282" Command="{Binding  RemoveStar}" />
+        <Button Content="Remove" Margin="239,10,211,282" Click="Button_Click"/>
     </Grid>
 </Window>
 

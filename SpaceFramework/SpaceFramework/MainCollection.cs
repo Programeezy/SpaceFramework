@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SpaceFramework
 {
-    public class MainCollection<T> : IEnumerable<T>, IObservable<T>
+    public class MainCollection<T> : IEnumerable<T>, INotifyCollectionChanged
     {
         private T[] _Collection = new T[0];
+
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
         public int Count { get; set; }
 
         public MainCollection()
@@ -48,6 +52,7 @@ namespace SpaceFramework
 
             _Collection[Count] = item;
             Count++;
+            OnCollectionChanged();
         }
 
         public bool Remove(T item)
@@ -60,6 +65,7 @@ namespace SpaceFramework
                         _Collection[j] = _Collection[j + 1];
                     _Collection[Count] = default(T);
                     Count--;
+                    OnCollectionChanged();
                     return true;
                 }
             }
@@ -77,10 +83,10 @@ namespace SpaceFramework
         {
             return GetEnumerator();
         }
-
-        public IDisposable Subscribe(IObserver<T> observer)
+        
+        public void OnCollectionChanged()
         {
-            throw new NotImplementedException();
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
     }
 }
