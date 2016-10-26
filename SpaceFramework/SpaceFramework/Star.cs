@@ -20,13 +20,11 @@ namespace SpaceFramework
             Mass = mass;
             Luminosity = luminosity;
             Type = type;
-            SatellitePlanets = satellite;
+            if(satellite != null)
+                SatellitePlanets = satellite;
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
+        
         //todo:Properties
         public string Name { get; set; }
         public double Radius { get; set; }

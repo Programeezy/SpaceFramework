@@ -23,7 +23,7 @@ namespace SpaceFramework.Desktop.ViewModel
             Luminosity = star.Luminosity.ToString();
             Type = star.Type.ToString();
             Satellites = star.SatellitePlanets;
-
+            
         }
     }
 }

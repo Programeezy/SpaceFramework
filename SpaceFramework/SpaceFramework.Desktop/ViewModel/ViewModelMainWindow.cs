@@ -5,23 +5,62 @@ namespace SpaceFramework.Desktop.ViewModel
 {
     class ViewModelMainWindow : ViewModelBase
     {
-        public StarCollection Stars { get; set; }
+        private StarCollection _Stars;
+  
+        public StarCollection Stars
+        {
+            get
+            {
+                if (SelectedConstellation != null)
+                {
+                    Constellation current = SelectedConstellation as Constellation;
+                    _Stars = current.Stars;
+                    return _Stars;
+                }
+                return new StarCollection();
+            }
+
+            set
+            {
+                if (SelectedConstellation != null)
+                {
+                    Constellation current = SelectedConstellation as Constellation;
+                    current.Stars = value;
+                    NotifyPropertyChanged("Stars");
+                }
+            }
+        }
+
         public PlanetCollection Planets { get; set; }
+        public ConstellationCollection Constellations { get; set; }
         public object SelectedStar { get; set; }
-        public delegate void MyCommand(object sender, RoutedEventArgs e);
-        private MyCommand _RemoveStar;
-       
-       // public MyCommand ShowStarInfo { get; set; }
+        private object _SelectedConstellation;
+        public object SelectedConstellation
+        {
+            get
+            {
+                return _SelectedConstellation;
+            }
+            set
+            {
+                _SelectedConstellation = value;
+                var current = _SelectedConstellation as Constellation;
+                Stars = current.Stars;
+                NotifyPropertyChanged("Stars");
+            }
+        }
+
 
         public ViewModelMainWindow()
         {
-           // ShowStarInfo = new MyCommand(ListBox_MouseDoubleClick);
+           
             Stars = new StarCollection();
             Planets = new PlanetCollection();
+            Constellations = new ConstellationCollection();
+            Constellations.Add(new Constellation("Libra",null, Stars));
             Planets.Add(new Planet("Earth", 5, 4, 2, 3, 4, null));
             Stars.Add(new Star("Sun", 3, 4, 5, (LumEnum) 1, Planets));
 
-            //RemoveStar = new MyCommand(Button_Click);
            
         }
 

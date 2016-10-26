@@ -12,8 +12,20 @@
         <ViewModel:ViewModelMainWindow x:Key="MainViewModel" />
     </Window.Resources>
     <Grid>
-        <ListBox Name="Stars"  ItemsSource="{Binding Stars}" SelectedItem="{Binding SelectedStar}" DisplayMemberPath="Name" HorizontalAlignment="Left" MouseDoubleClick="ListBox_MouseDoubleClick" Margin="10,10,0,135" Width="186" />
-        <Button Content="Remove" Margin="239,10,211,282" Click="Button_Click"/>
+        <ListBox Name="Constellations"  ItemsSource="{Binding Constellations,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedConstellation, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" HorizontalAlignment="Left"  Margin="10,10,0,135" Width="186" />
+        <ListBox Name="Stars" ItemsSource="{Binding Stars,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStar}" DisplayMemberPath="Name"  Margin="10,203,321,10"/>
+        <Button Content="Remove" Margin="237,43,213,249" Click="Button_Click"/>
+        <Button Content="Add" Margin="237,6,213,287" />
+        
+            <Grid Margin="334,10,10,111"  Visibility="Visible">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <TextBlock Text="Name" Margin="9,9,83,156"/>
+                
+            </Border>
+        </Grid>
+        
+        
     </Grid>
+    
 </Window>
 
