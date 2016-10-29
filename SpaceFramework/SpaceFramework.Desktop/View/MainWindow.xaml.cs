@@ -36,7 +36,7 @@ namespace SpaceFramework.Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as ViewModel.ViewModelMainWindow;
-            viewModel.Stars.Remove((Star)Stars.SelectedItem);
+            viewModel.Remove(sender, e);
         }
     }
 }

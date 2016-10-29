@@ -32,6 +32,11 @@ namespace SpaceFramework
             Count = _Collection.Length;
         }
 
+        public MainCollection(T item)
+        {
+            Add(item);
+        }
+
         public bool Contains(object item)
         {
             foreach (object _item in this)

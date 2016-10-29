@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SpaceFramework.Desktop.ViewModel
 {
-    class ViewModelStarInfo : ViewModelBase
+     class ViewModelStarInfo : ViewModelBase
     {
-        public string Name { get; set; }
-        public string Radius { get; set; }
-        public string Mass { get; set; }
-        public string Luminosity { get; set; }
-        public string Type { get; set; }
+        public string StarName { get; set; }
+        public string StarRadius { get; set; }
+        public string StarMass { get; set; }
+        public string StarLuminosity { get; set; }
+        public string StarType { get; set; }
         public PlanetCollection Satellites { get; set; }
 
         public ViewModelStarInfo(Star star)
@@ -27,3 +27,4 @@ namespace SpaceFramework.Desktop.ViewModel
         }
     }
 }
+*/

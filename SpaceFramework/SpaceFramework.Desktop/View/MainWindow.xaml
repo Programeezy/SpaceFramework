@@ -11,21 +11,29 @@
     <Window.Resources>
         <ViewModel:ViewModelMainWindow x:Key="MainViewModel" />
     </Window.Resources>
-    <Grid>
-        <ListBox Name="Constellations"  ItemsSource="{Binding Constellations,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedConstellation, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" HorizontalAlignment="Left"  Margin="10,10,0,135" Width="186" />
-        <ListBox Name="Stars" ItemsSource="{Binding Stars,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStar}" DisplayMemberPath="Name"  Margin="10,203,321,10"/>
-        <Button Content="Remove" Margin="237,43,213,249" Click="Button_Click"/>
-        <Button Content="Add" Margin="237,6,213,287" />
-        
-            <Grid Margin="334,10,10,111"  Visibility="Visible">
-            <Border BorderBrush="Black" BorderThickness="1">
-                <TextBlock Text="Name" Margin="9,9,83,156"/>
-                
-            </Border>
+    <StackPanel>
+        <Grid>
+
+            <ListBox Name="Constellations"  ItemsSource="{Binding Constellations}" SelectedItem="{Binding SelectedConstellation}" DisplayMemberPath="Name" HorizontalAlignment="Left"  Margin="10,10,0,135" Width="186" />
+            <ListBox Name="Stars" ItemsSource="{Binding Stars}" SelectedItem="{Binding SelectedStar}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="10,203,0,10" Width="186"/>
+            <Button Content="Remove" Margin="246,65,214,227" HorizontalAlignment="Center"  Click="Button_Click" Width="57"/>
+            <Button Content="Add" Margin="246,27,214,265" HorizontalAlignment="Center" Width="57"  />
+
+            <Grid  Margin="334,10,10,111" HorizontalAlignment="Right"  Visibility="Visible">
+                <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,-101"/>
+                <TextBlock Text="Name:" Margin="10,9,82,156"/>
+                <TextBlock Text="{Binding StarName}" Margin="82,9,10,156"/>
+                <TextBlock Text="Radius:" Margin="10,43,82,122"/>
+                <TextBlock Text="{Binding StarRadius}" Margin="82,43,10,122"/>
+                <TextBlock Text="Mass:" Margin="10,77,82,88"/>
+                <TextBlock Text="{Binding StarMass}" Margin="82,77,10,88"/>
+                <TextBlock Text="Luminosity:" Margin="10,116,82,49"/>
+                <TextBlock Text="{Binding StarLuminosity}" Margin="82,116,10,49"/>
+                <TextBlock Text="Star Type:" Margin="10,150,82,15"/>
+                <TextBlock Text="{Binding StarType}" Margin="82,150,10,15"/>
+                <TextBlock Text="Planets:" Margin="10,184,82,-19"/>
+            </Grid>
         </Grid>
-        
-        
-    </Grid>
-    
+    </StackPanel>
 </Window>
 

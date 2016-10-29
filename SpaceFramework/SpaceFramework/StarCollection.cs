@@ -9,7 +9,7 @@ namespace SpaceFramework
 {
     public class StarCollection : MainCollection<Star>
     {
-    
+
         public bool Find(string Name)
         {
             foreach (Star _item in this)
