@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace SpaceFramework.Desktop.ViewModel
@@ -30,7 +31,16 @@ namespace SpaceFramework.Desktop.ViewModel
         }
        
         public PlanetCollection Planets { get; set; }
-        public ConstellationCollection Constellations { get; set; }
+        public ConstellationCollection _Constellations;
+        public ConstellationCollection Constellations
+        {
+            get { return _Constellations; }
+            set
+            {
+                _Constellations = value;
+                NotifyPropertyChanged("Constellations");
+            }
+        }
         private object _SelectedStar;
         public object SelectedStar
         {
@@ -42,13 +52,18 @@ namespace SpaceFramework.Desktop.ViewModel
             {
                 _SelectedStar = value;
                 var current = _SelectedStar as Star;
-                StarName = current.Name;
-                StarRadius = current.Radius.ToString();
-                StarMass = current.Mass.ToString();
-                StarLuminosity = current.Luminosity.ToString();
-                StarType = current.Type.ToString();
-                Satellites = current.SatellitePlanets;
-                NotifyPropertyChanged("SelectedStar");
+                if (current != null)
+                {
+                    StarName = current.Name;
+                    StarRadius = current.Radius.ToString();
+                    StarMass = current.Mass.ToString();
+                    StarLuminosity = current.Luminosity.ToString();
+                    StarType = current.Type.ToString();
+                    Satellites = current.SatellitePlanets;
+                    Planets = current.SatellitePlanets;
+                    NotifyPropertyChanged("Planets");
+                    NotifyPropertyChanged("SelectedStar");
+                }
             }
         }
         private object _SelectedConstellation;
@@ -132,31 +147,47 @@ namespace SpaceFramework.Desktop.ViewModel
             }
         }
 
+        private string _ConstellationName;
+        public string ConstellationName
+        {
+            get { return _ConstellationName; }
+            set
+            {
+                _ConstellationName = value;
+                NotifyPropertyChanged("ConstellationName");
+            }
+        }
+        private ICommand _AddConstellationCommand;
+        public ICommand AddConstellationCommand
+        {
+            get
+            {
+                return new RelayCommand(AddConstellation);
+            }
+        }
+
         public ViewModelMainWindow()
         {
            
             Stars = new StarCollection();
             Planets = new PlanetCollection();
             StarCollection stars = new StarCollection();
-            stars.Add(new Star("Sun", 3, 4, 5, (LumEnum)1, Planets));
+            PlanetCollection planets = new PlanetCollection();
+            planets.Add(new Planet("Earth", 5, 4, 2, 3, 4, null));
+            stars.Add(new Star("Sun", 3, 4, 5, (LumEnum)1, planets));
             Constellations = new ConstellationCollection();
             Constellations.Add(new Constellation("Libra", null, stars));
-            Planets.Add(new Planet("Earth", 5, 4, 2, 3, 4, null));
-            
+    }
 
-           
-        }
 
-        /*    private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void AddConstellation(object Name)
+        {
+            if (Name != null)
             {
-                if (SelectedStar != null)
-                {
-                    var infoWindow = new StarInfo() { DataContext = new ViewModelStarInfo((Star)SelectedStar) };
-                    infoWindow.Show();
-                }
+                Constellations.Add(new Constellation(Name.ToString()));
             }
 
-        */
+        }
 
         public void Remove(object sender, RoutedEventArgs e)
         {

@@ -20,10 +20,10 @@ namespace SpaceFramework.Desktop.ViewModel
 
     class RelayCommand : ICommand
     {
-        private Action execute;
+        private Action<object> execute;
         public event EventHandler CanExecuteChanged;
 
-        public RelayCommand(Action execute)
+        public RelayCommand(Action<object> execute)
         {
             this.execute = execute;
         }
@@ -35,7 +35,7 @@ namespace SpaceFramework.Desktop.ViewModel
 
         public void Execute(object parameter)
         {
-            execute();
+            execute(parameter);
         }
     }
 }
