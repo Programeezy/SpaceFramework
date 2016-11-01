@@ -59,12 +59,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\ViewModelAddStar.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelMainWindow.cs" />
     <Compile Include="ViewModel\ViewModelStarInfo.cs" />
+    <Compile Include="View\AddStarWindow.xaml.cs">
+      <DependentUpon>AddStarWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StarInfo.xaml.cs">
       <DependentUpon>StarInfo.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AddStarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
