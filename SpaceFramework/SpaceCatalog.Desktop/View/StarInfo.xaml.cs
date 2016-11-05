@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SpaceFramework.Desktop.View
+namespace SpaceCatalog.Desktop.View
 {
     /// <summary>
     /// Interaction logic for ObjectInfo.xaml

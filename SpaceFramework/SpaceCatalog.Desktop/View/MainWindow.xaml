@@ -1,0 +1,45 @@
+﻿<Window x:Class="SpaceCatalog.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpaceCatalog.Desktop"
+        xmlns:ViewModel="clr-namespace:SpaceCatalog.Desktop.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="389.118" Width="573.382"
+        DataContext="{DynamicResource MainViewModel}">
+    <Window.Resources>
+        <ViewModel:ViewModelMainWindow x:Key="MainViewModel" />
+    </Window.Resources>
+    <StackPanel>
+        <Grid>
+
+            <TextBox Name="ConstellationName"  Text="{Binding ConstellationName }" Margin="221,10,179,290"/>
+            <ListBox Name="Constellations"  ItemsSource="{Binding Constellations}" SelectedItem="{Binding SelectedConstellation}" DisplayMemberPath="Name" HorizontalAlignment="Left"  Margin="10,10,0,135" Width="186" />
+            <ListBox Name="Stars" ItemsSource="{Binding Stars}" SelectedItem="{Binding SelectedStar}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="10,203,0,10" Width="186"/>
+            <Button Content="Remove" Margin="266,84,222,208"    Click="Button_Click" Width="69"/>
+            <Button Content="Add" Margin="266,43,222,249" Command="{Binding AddConstellationCommand}" CommandParameter="{Binding ConstellationName}" VerticalAlignment="Center" Width="69"  />
+            <Button Content="Add Star" Command="{Binding AddStarCommand}" Margin="270,224,226,70" />
+            <Grid  Margin="334,10,10,111" HorizontalAlignment="Right"  Visibility="Visible">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="87*"/>
+                    <RowDefinition Height="107*"/>
+                </Grid.RowDefinitions>
+                <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,10,-101" Grid.RowSpan="2" />
+                <TextBlock Text="Name:" Margin="10,9,82,49.5"/>
+                <TextBlock Text="{Binding StarName}" Margin="82,9,10,49.5"/>
+                <TextBlock Text="Radius:" Margin="10,43,82,15.5"/>
+                <TextBlock Text="{Binding StarRadius}" Margin="82,43,10,15.5"/>
+                <TextBlock Text="Mass:" Margin="10,77,82,88" Grid.RowSpan="2"/>
+                <TextBlock Text="{Binding StarMass}" Margin="82,77,10,88" Grid.RowSpan="2"/>
+                <TextBlock Text="Luminosity:" Margin="10,29.5,82,49" Grid.Row="1"/>
+                <TextBlock Text="{Binding StarLuminosity}" Margin="82,29.5,10,49" Grid.Row="1"/>
+                <TextBlock Text="Star Type:" Margin="10,63.5,82,15" Grid.Row="1"/>
+                <TextBlock Text="{Binding StarType}" Margin="82,63.5,10,15" Grid.Row="1"/>
+                <TextBlock Text="Planets:" Margin="10,97.5,82,-19" Grid.Row="1"/>
+                <ListBox Name="Planets" ItemsSource="{Binding Planets}" DisplayMemberPath="Name" Margin="10,125,19,-83" Grid.Row="1" />
+            </Grid>
+        </Grid>
+    </StackPanel>
+</Window>
+

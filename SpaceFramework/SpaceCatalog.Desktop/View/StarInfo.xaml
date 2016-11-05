@@ -1,9 +1,9 @@
-﻿<Window x:Class="SpaceFramework.Desktop.View.StarInfo"
+﻿<Window x:Class="SpaceCatalog.Desktop.View.StarInfo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SpaceFramework.Desktop.View"
+        xmlns:local="clr-namespace:SpaceCatalog.Desktop.View"
         mc:Ignorable="d"
         Title="Star Information" Height="300" Width="300">
     <Grid>

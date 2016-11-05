@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpaceFramework.Desktop.ViewModel
+namespace SpaceCatalog.IO
 {
-    class ViewModelAddStar
+    public class Class1
     {
     }
 }
