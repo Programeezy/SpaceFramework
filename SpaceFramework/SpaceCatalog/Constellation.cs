@@ -2,6 +2,13 @@
 {
     public class Constellation
     {
+
+        public Constellation()
+        {
+            Name = null;
+            ImagePath = "";
+            Stars = new StarCollection();
+        }
         public Constellation(string name, string imagepath, StarCollection constellas)
         {
             Name = name;

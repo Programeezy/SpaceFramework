@@ -9,6 +9,7 @@ namespace SpaceCatalog
 {
     public class Planet
     {
+
         public Planet(string name, double radius, double mass, double PoS, double PoR, double RoO, params Star[] satellites)
         {
             IsExist = true;

@@ -2,6 +2,8 @@
 using System;
 using System.Windows;
 using System.Windows.Input;
+using SpaceCatalog.IO;
+using System.IO;
 
 namespace SpaceCatalog.Desktop.ViewModel
 {
@@ -186,6 +188,14 @@ namespace SpaceCatalog.Desktop.ViewModel
                 return new RelayCommand(AddStar);
             }
         }
+        
+        public ICommand RemoveConstellationCommand
+        {
+            get
+            {
+                return new RelayCommand(RemoveConstellation);
+            }
+        }
 
         public ViewModelMainWindow()
         {
@@ -198,6 +208,7 @@ namespace SpaceCatalog.Desktop.ViewModel
             stars.Add(new Star("Sun", 3, 4, 5, (LumEnum)1, planets));
             Constellations = new ConstellationCollection();
             Constellations.Add(new Constellation("Libra", null, stars));
+            SpaceSerializer.Serialize(Constellations, "constellations");
     }
 
 
@@ -220,7 +231,7 @@ namespace SpaceCatalog.Desktop.ViewModel
             }
         }
 
-        public void Remove(object sender, RoutedEventArgs e)
+        public void RemoveConstellation()
         {
             if (SelectedConstellation!= null)
             {

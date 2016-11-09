@@ -16,6 +16,10 @@ namespace SpaceCatalog
 
         public int Count { get; set; }
 
+        public T this[int index]
+        {
+            get { return _Collection[index]; }
+        }
         public MainCollection()
         {
             Count = 0;
@@ -37,11 +41,11 @@ namespace SpaceCatalog
             Add(item);
         }
 
-        public bool Contains(object item)
+        public bool Contains(T item)
         {
-            foreach (object _item in this)
+            foreach (var _item in this)
             {
-                if (_item == item)
+                if (_item.Equals(item))
                 {
                     return true;
                 }

@@ -24,6 +24,10 @@ namespace SpaceCatalog
                 SatellitePlanets = satellite;
         }
 
+        public Star()
+        {
+
+        }
         
         //todo:Properties
         public string Name { get; set; }

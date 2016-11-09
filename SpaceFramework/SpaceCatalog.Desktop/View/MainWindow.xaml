@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SpaceCatalog.Desktop"
         xmlns:ViewModel="clr-namespace:SpaceCatalog.Desktop.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="446.887" Width="654.039"
+        Title="SpaceCatalog" Height="446.887" Width="654.039"
         DataContext="{DynamicResource MainViewModel}">
     <Window.Resources>
         <ViewModel:ViewModelMainWindow x:Key="MainViewModel" />
@@ -35,7 +35,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Margin="10,0" />
-            <Button Content="Remove"    Click="Button_Click" HorizontalAlignment="Center" Width="76" Grid.Row="0" Margin="62,96,62,10" MaxHeight="36" MinWidth="76" />
+            <Button Content="Remove"   Command="{Binding RemoveConstellationCommand}" HorizontalAlignment="Center" Width="76" Grid.Row="0" Margin="62,96,62,10" MaxHeight="36" MinWidth="76" />
             <Button Content="Add"  Command="{Binding AddConstellationCommand}" CommandParameter="{Binding ConstellationName}" HorizontalAlignment="Center"  Grid.Row="0" Margin="62,51,62,55" MaxHeight="36"  Width="76"  />
             <TextBox Name="ConstellationName"  Text="{Binding ConstellationName }" Grid.Row="0" Margin="49,10,48,104" MaxHeight="49"/>
             <Button Content="Add Star" Command="{Binding AddStarCommand}" HorizontalAlignment="Center" Margin="62,28,62,79" Width="76" Grid.Row="2" MaxHeight="36" MinWidth="24" />
@@ -60,10 +60,10 @@
             <TextBlock Text="Mass:" Grid.Row="2" Margin="10,18,97,17" VerticalAlignment="Center"  FontSize="14" Height="18" />
             <TextBlock Text="{Binding StarMass}" Grid.Row="2" Margin="82,18,10,15" VerticalAlignment="Center"  FontSize="14" Height="20"/>
             <TextBlock Text="Luminosity:" Grid.Row="3" Margin="10,15,97,18" VerticalAlignment="Center"  FontSize="14" Height="20" />
-            <TextBlock Text="{Binding StarLuminosity}"  Grid.Row="3" Margin="82,13,10,20" VerticalAlignment="Center"  FontSize="14" Height="20" />
+            <TextBlock Text="{Binding StarLuminosity}"  Grid.Row="3" Margin="87,15,5,19" VerticalAlignment="Center"  FontSize="14" Height="20" />
             <TextBlock Text="Star Type:" Grid.Row="4" Margin="10,15,97,18" VerticalAlignment="Center"  FontSize="14" Height="18"/>
             <TextBlock Text="{Binding StarType}"  Grid.Row="4" Margin="82,13,10,20" VerticalAlignment="Center"  FontSize="14" Height="20" />
-            <TextBlock Text="Planets:" Margin="10,10,82,78" Grid.Row="5" FontSize="14" />
+            <TextBlock Text="Planets:" Margin="10,10,82,108" Grid.Row="5" FontSize="14" />
             <ListBox Name="Planets" ItemsSource="{Binding Planets}" DisplayMemberPath="Name" Margin="10,31,26,27" Grid.Row="5" ScrollViewer.CanContentScroll="True" />
 
         </Grid>

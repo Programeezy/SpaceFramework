@@ -36,10 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SpaceFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SpaceFramework\bin\Debug\SpaceFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -117,6 +113,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpaceCatalog.IO\SpaceCatalog.IO.csproj">
+      <Project>{5f5a8116-393f-42f4-b660-a5e9e0176b12}</Project>
+      <Name>SpaceCatalog.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpaceCatalog\SpaceCatalog.csproj">
+      <Project>{cf9f324c-bc97-4bd5-a6f9-c7ddc01175c8}</Project>
+      <Name>SpaceCatalog</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

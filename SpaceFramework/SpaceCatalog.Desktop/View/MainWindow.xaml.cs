@@ -33,10 +33,6 @@ namespace SpaceCatalog.Desktop
         }
 
       
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var viewModel = DataContext as ViewModel.ViewModelMainWindow;
-            viewModel.Remove(sender, e);
-        }
+       
     }
 }
