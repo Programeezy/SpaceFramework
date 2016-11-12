@@ -43,6 +43,13 @@
   <ItemGroup>
     <Compile Include="Serializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpaceFileHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpaceCatalog\SpaceCatalog.csproj">
+      <Project>{cf9f324c-bc97-4bd5-a6f9-c7ddc01175c8}</Project>
+      <Name>SpaceCatalog</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
