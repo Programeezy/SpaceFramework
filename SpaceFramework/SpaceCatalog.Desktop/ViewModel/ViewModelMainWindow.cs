@@ -93,6 +93,7 @@ namespace SpaceCatalog.Desktop.ViewModel
                 var current = _SelectedConstellation as Constellation;
                 if(current!= null)
                     Stars = current.Stars;
+                ConstellationImage = Directory.GetCurrentDirectory() + current.ImagePath;
                 NotifyPropertyChanged("Stars");
             }
         }
@@ -197,6 +198,22 @@ namespace SpaceCatalog.Desktop.ViewModel
             }
         }
 
+        private string _ConstellationImage;
+        public string ConstellationImage
+        {
+            get
+            {
+                return _ConstellationImage;
+            }
+
+            set
+            {
+                _ConstellationImage = value;
+                NotifyPropertyChanged("ConstellationImage");
+
+            }
+        }
+
         public ViewModelMainWindow()
         {
            
@@ -204,11 +221,14 @@ namespace SpaceCatalog.Desktop.ViewModel
             Planets = new PlanetCollection();
             StarCollection stars = new StarCollection();
             PlanetCollection planets = new PlanetCollection();
-            planets.Add(new Planet("Earth", 5, 4, 2, 3, 4, null));
+            planets.Add(new Planet("Earth", 5, 4, 2, 3, 4));
             stars.Add(new Star("Sun", 3, 4, 5, (LumEnum)1, planets));
             Constellations = new ConstellationCollection();
-            Constellations.Add(new Constellation("Libra", null, stars));
+            Constellations.Add(new Constellation("Libra", @"\img\libra.jpg", stars));
+            foreach (Constellation item in Constellations)
+               SpaceFileHandler.WriteBinaryConstellation(SpaceFileHandler.ConstellationsFile, item);
             SpaceSerializer.Serialize(Constellations, "constellations");
+            Constellations.Add(SpaceFileHandler.ReadBinaryConstellation(SpaceFileHandler.ConstellationsFile));
     }
 
 

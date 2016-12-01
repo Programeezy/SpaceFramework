@@ -35,6 +35,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Margin="10,0" />
+            <Image Source="{Binding ConstellationImage}" Grid.Row="1" Margin="10,0" />
             <Button Content="Remove"   Command="{Binding RemoveConstellationCommand}" HorizontalAlignment="Center" Width="76" Grid.Row="0" Margin="62,96,62,10" MaxHeight="36" MinWidth="76" />
             <Button Content="Add"  Command="{Binding AddConstellationCommand}" CommandParameter="{Binding ConstellationName}" HorizontalAlignment="Center"  Grid.Row="0" Margin="62,51,62,55" MaxHeight="36"  Width="76"  />
             <TextBox Name="ConstellationName"  Text="{Binding ConstellationName }" Grid.Row="0" Margin="49,10,48,104" MaxHeight="49"/>

@@ -10,7 +10,7 @@ namespace SpaceCatalog
     public class Planet
     {
 
-        public Planet(string name, double radius, double mass, double PoS, double PoR, double RoO, params Star[] satellites)
+        public Planet(string name, double radius, double mass, double PoS, double PoR, double RoO)
         {
             IsExist = true;
             Name = name;
@@ -19,12 +19,12 @@ namespace SpaceCatalog
             PeriodOfSpinning = PoS;
             PeriodOfRotation = PoR;
             RadiusOfOrbit = RoO;
-           if (satellites != null)
+          /* if (satellites != null)
             {
                 Array.Resize(ref Satellites, satellites.Length);
                 Satellites = satellites;
             }
-            else Satellites = null;
+            else Satellites = null;*/
         }
 
         public Planet()
@@ -40,7 +40,7 @@ namespace SpaceCatalog
         public double PeriodOfSpinning { get; set; }
         public double PeriodOfRotation { get; set; }
         public double RadiusOfOrbit { get; set; }
-        public Star[] Satellites;
+        //public Star[] Satellites;
     }
     
 }
