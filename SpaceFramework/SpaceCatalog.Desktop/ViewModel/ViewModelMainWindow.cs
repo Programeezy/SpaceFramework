@@ -10,14 +10,14 @@ namespace SpaceCatalog.Desktop.ViewModel
     class ViewModelMainWindow : ViewModelBase
     {
         private StarCollection _Stars;
-  
-       public StarCollection Stars
+
+        public StarCollection Stars
         {
             get
             {
                 if (SelectedConstellation != null)
                 {
-                    
+
                     return _Stars;
                 }
                 return new StarCollection();
@@ -32,7 +32,7 @@ namespace SpaceCatalog.Desktop.ViewModel
                 }
             }
         }
-       
+
         public PlanetCollection Planets { get; set; }
         public ConstellationCollection _Constellations;
         public ConstellationCollection Constellations
@@ -86,12 +86,12 @@ namespace SpaceCatalog.Desktop.ViewModel
         public object SelectedConstellation
         {
             get
-            {   return _SelectedConstellation; }
+            { return _SelectedConstellation; }
             set
             {
                 _SelectedConstellation = value;
                 var current = _SelectedConstellation as Constellation;
-                if(current!= null)
+                if (current != null)
                     Stars = current.Stars;
                 ConstellationImage = Directory.GetCurrentDirectory() + current.ImagePath;
                 NotifyPropertyChanged("Stars");
@@ -102,7 +102,7 @@ namespace SpaceCatalog.Desktop.ViewModel
         public string StarName
         {
             get
-            {   return _StarName;  }
+            { return _StarName; }
             set
             {
                 _StarName = value;
@@ -114,7 +114,7 @@ namespace SpaceCatalog.Desktop.ViewModel
         public string StarRadius
         {
             get
-            {   return _StarRadius; }
+            { return _StarRadius; }
             set
             {
                 _StarRadius = value;
@@ -189,12 +189,28 @@ namespace SpaceCatalog.Desktop.ViewModel
                 return new RelayCommand(AddStar);
             }
         }
-        
+
         public ICommand RemoveConstellationCommand
         {
             get
             {
                 return new RelayCommand(RemoveConstellation);
+            }
+        }
+
+        public ICommand SerializeCommand
+        {
+            get
+            {
+                return new RelayCommand(Serialize);
+            }
+        }
+
+        public ICommand DeserializeComand
+        {
+            get
+            {
+                return new RelayCommand(Deserialize);
             }
         }
 
@@ -227,7 +243,7 @@ namespace SpaceCatalog.Desktop.ViewModel
             Constellations.Add(new Constellation("Libra", @"\img\libra.jpg", stars));
             foreach (Constellation item in Constellations)
                SpaceFileHandler.WriteBinaryConstellation(SpaceFileHandler.ConstellationsFile, item);
-            SpaceSerializer.Serialize(Constellations, "constellations");
+           // SpaceSerializer.Serialize(Constellations, "constellations");
             Constellations.Add(SpaceFileHandler.ReadBinaryConstellation(SpaceFileHandler.ConstellationsFile));
     }
 
@@ -258,6 +274,16 @@ namespace SpaceCatalog.Desktop.ViewModel
                 Constellations.Remove((Constellation)SelectedConstellation);
                 NotifyPropertyChanged("Constellations");
             }
+        }
+
+        public void Serialize()
+        {
+            SpaceSerializer.Serialize(Constellations, "constellations");
+        }
+
+        public void Deserialize()
+        {
+            Constellations = SpaceSerializer.Deserialize<ConstellationCollection>("constellations");
         }
 
     }

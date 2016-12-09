@@ -30,16 +30,19 @@
         </Grid>
         <Grid Grid.Column="1" >
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="104*"/>
+                <RowDefinition Height="104*"/>
+                <RowDefinition Height="169*"/>
+                <RowDefinition Height="40*"/>
             </Grid.RowDefinitions>
             <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Margin="10,0" />
             <Image Source="{Binding ConstellationImage}" Grid.Row="1" Margin="10,0" />
-            <Button Content="Remove"   Command="{Binding RemoveConstellationCommand}" HorizontalAlignment="Center" Width="76" Grid.Row="0" Margin="62,96,62,10" MaxHeight="36" MinWidth="76" />
-            <Button Content="Add"  Command="{Binding AddConstellationCommand}" CommandParameter="{Binding ConstellationName}" HorizontalAlignment="Center"  Grid.Row="0" Margin="62,51,62,55" MaxHeight="36"  Width="76"  />
-            <TextBox Name="ConstellationName"  Text="{Binding ConstellationName }" Grid.Row="0" Margin="49,10,48,104" MaxHeight="49"/>
-            <Button Content="Add Star" Command="{Binding AddStarCommand}" HorizontalAlignment="Center" Margin="62,28,62,79" Width="76" Grid.Row="2" MaxHeight="36" MinWidth="24" />
+            <Button Content="Remove"   Command="{Binding RemoveConstellationCommand}" HorizontalAlignment="Center" Width="76" Grid.Row="0" Margin="76,96,77,8" MaxHeight="36" MinWidth="76" />
+            <Button Content="Add"  Command="{Binding AddConstellationCommand}" CommandParameter="{Binding ConstellationName}" HorizontalAlignment="Center"  Grid.Row="0" Margin="76,51,77,53" MaxHeight="36"  Width="76"  />
+            <TextBox Name="ConstellationName"  Text="{Binding ConstellationName }" Grid.Row="0" Margin="49,10,48,94" MaxHeight="49"/>
+            <Button Content="Add Star" Command="{Binding AddStarCommand}" HorizontalAlignment="Center" Margin="76,28,99,79" Width="54" Grid.Row="2" MaxHeight="36" MinWidth="24" />
+            <Button Content="Deserialize" Command="{Binding DeserializeCommand}" HorizontalAlignment="Center" Grid.Row="3" Margin="118,0,48,0" />
+            <Button Content="Serialize" Command="{Binding SerializeCommand}" Grid.Row="3" Margin="0,0,164,0" RenderTransformOrigin="1.297,0.455" />
         </Grid>
 
         <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2"  />

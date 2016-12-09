@@ -22,7 +22,6 @@ namespace SpaceCatalog
         }
         public MainCollection()
         {
-            Count = 0;
         }
 
         public MainCollection(params T[] collection)
