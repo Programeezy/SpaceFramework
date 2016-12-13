@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Constellation.cs" />
     <Compile Include="ConstellationCollection.cs" />
+    <Compile Include="LINQ.cs" />
     <Compile Include="MainCollection.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="PlanetCollection.cs" />
