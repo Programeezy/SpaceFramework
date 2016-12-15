@@ -243,7 +243,7 @@ namespace SpaceCatalog.Desktop.ViewModel
             Constellations.Add(new Constellation("Libra", @"\img\libra.jpg", stars));
             foreach (Constellation item in Constellations)
                SpaceFileHandler.WriteBinaryConstellation(SpaceFileHandler.ConstellationsFile, item);
-           // SpaceSerializer.Serialize(Constellations, "constellations");
+            SpaceSerializer.Serialize(Constellations, "constellations");
             Constellations.Add(SpaceFileHandler.ReadBinaryConstellation(SpaceFileHandler.ConstellationsFile));
     }
 
@@ -283,7 +283,7 @@ namespace SpaceCatalog.Desktop.ViewModel
 
         public void Deserialize()
         {
-            Constellations = SpaceSerializer.Deserialize<ConstellationCollection>("constellations");
+
         }
 
     }

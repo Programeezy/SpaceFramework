@@ -1,77 +1,105 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace SpaceCatalog.IO
 {
-    public static class SpaceSerializer 
+    public static class SpaceSerializer
     {
         private static Stream GetFile(string filename)
         {
             string dir_path = Path.GetDirectoryName(filename + ".xml");
             Stream st = new FileStream(filename + ".xml", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
             return st;
+            
         }
 
-      /*  public static void Serialize<T>(T graph, string filename)
-        {
-            XmlSerializer serializer = new XmlSerializer(graph.GetType(), filename);
-            using (TextWriter tw = new StreamWriter(GetFile(filename)))
-            {
-                serializer.Serialize(tw, graph);
-            }
-        }*/
+        /*  public static void Serialize<T>(T graph, string filename)
+          {
+              XmlSerializer serializer = new XmlSerializer(graph.GetType(), filename);
+              using (TextWriter tw = new StreamWriter(GetFile(filename)))
+              {
+                  serializer.Serialize(tw, graph);
+              }
+          }*/
 
-        private static void RecursionSerialize(object graph, XmlWriter xw)
+        private static XmlDocument RecursionSerialize(object graph, XmlDocument xmlDoc, XmlNode rootNode)
         {
             var graphType = graph.GetType();
 
-            if (typeof(IEnumerable).IsAssignableFrom(graphType))
+            if (xmlDoc == null)
+                xmlDoc = new XmlDocument();
+
+            if (graph == null)
+                return xmlDoc;
+
+            if (rootNode == null)
             {
-                foreach (var item in (IEnumerable)graph)
-                {
-                    RecursionSerialize(item, xw);
-                }
+                rootNode = xmlDoc.CreateElement(string.Empty, graphType.Name, string.Empty);
+                xmlDoc.AppendChild(rootNode);
             }
 
-            else if (graphType.IsContextful)
+            if (graphType.IsPrimitive || graphType == typeof(decimal) || graphType == typeof(string))
             {
-                var properties = graphType.GetProperties();
+                if (graph != null)
+                    rootNode.InnerText = graph.ToString();
+            }
 
-                foreach (var property in properties)
+            else if (typeof(IEnumerable).IsAssignableFrom(graphType) || graphType.IsGenericType && graphType.GetGenericTypeDefinition() == typeof(List<>))
+            {
+                XmlNode node = null;
+
+                foreach (var item in (IEnumerable)graph)
                 {
-                    RecursionSerialize(property.GetValue(graph), xw);
+                    if (node == null)
+                    {
+                        node = xmlDoc.CreateElement(string.Empty, item.GetType().Name, string.Empty);
+                        node = rootNode.AppendChild(node);
+                    }
+
+                    RecursionSerialize(item, xmlDoc, node);
+                
                 }
             }
 
             else
             {
-                var prop = graphType.GetProperty(graphType.Name);
-                xw.WriteElementString(graphType.Name, prop.GetValue(graph).ToString());
+                var properties = graphType.GetProperties();
+
+                foreach(var property in properties)
+                {
+                    XmlNode node = xmlDoc.CreateElement(string.Empty, property.Name, string.Empty);
+                    node = rootNode.AppendChild(node);
+                    var valor = property.GetValue(graph, null);
+                    RecursionSerialize(valor, xmlDoc, node);
+                }
             }
+
+            return xmlDoc;
         }
 
         public static void Serialize<T>(T graph, string filename)
         {
             var xw = XmlWriter.Create(GetFile(filename));
-            RecursionSerialize(graph, xw);
+
+            XmlDocument DocToWrite = RecursionSerialize(graph, null, null);
+            DocToWrite.Save(xw);
         }
 
-        public static T Deserialize<T>(string filename)
+        public static void Deserialize<T>(string filename, ref T obj)
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(T), filename);
-            using (TextReader tr = new StreamReader(GetFile(filename)))
-            {
-                try
-                {
-                    return (T)deserializer.Deserialize(tr);
-                }
-                catch(FileLoadException)
-                {
-                    throw new FileLoadException();
-                }
-            }
+            XmlDocument XmlDoc = new XmlDocument();
+            XmlDoc.Load(GetFile("constellations"));
+            XmlNodeList NodeList = XmlDoc.ChildNodes;
+            RecursionDeserialize(ref obj, node);
+            
+        }
+
+        private static void RecursionDeserialize<T>(ref T obj, XmlNode node)
+        {
+            
         }
        
     }
