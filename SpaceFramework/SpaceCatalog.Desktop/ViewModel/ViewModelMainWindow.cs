@@ -244,6 +244,7 @@ namespace SpaceCatalog.Desktop.ViewModel
             foreach (Constellation item in Constellations)
                SpaceFileHandler.WriteBinaryConstellation(SpaceFileHandler.ConstellationsFile, item);
             SpaceSerializer.Serialize(Constellations, "constellations");
+            //Constellations = SpaceSerializer.Deserialize<ConstellationCollection>("constellations");
             Constellations.Add(SpaceFileHandler.ReadBinaryConstellation(SpaceFileHandler.ConstellationsFile));
     }
 
